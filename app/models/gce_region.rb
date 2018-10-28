@@ -1,0 +1,2 @@
+class GceRegion < ApplicationRecord
+end

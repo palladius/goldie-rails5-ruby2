@@ -7,11 +7,12 @@
 $APP = {
   :name        => '[TEMPLATE] Goldie_Rails (you probably want to change me in config/initializers/riccardo_constants.rb)',
   :headline    => '[TEMPLATE] This is my Headline for  app. (config/initializers/riccardo_constants.rb)',
+  :history     => File.open("#{Rails.root}/HISTORY" ).read ,  # RAILS_ROOT
   :version     => File.open("#{Rails.root}/VERSION" ).read ,  # RAILS_ROOT
   :copyright   => 'Copyright 2018-18 A few rights reserved (see LICENSE)',
   :email       => 'riccardo.carle' + 'sso+goldie521@gmail.com',
   :author_name => 'Riccardo Carlesso',
-  :is_a_template => true, # change to false
+  :is_template => true, # change to false
 }
 
 $APP[:license] = File.open("#{Rails.root}/LICENSE" ).read rescue "No /LICENSE file found. Please add it to the root directory and Ill load it automatically for you ;)"

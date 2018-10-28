@@ -1,0 +1,2 @@
+module GceRegionsHelper
+end
