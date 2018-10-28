@@ -69,6 +69,6 @@ class GceRegionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gce_region_params
-      params.require(:gce_region).permit(:name, :address, :description, :is_active)
+      params.require(:gce_region).permit(:name, :address, :description, :default_zones, :is_active)
     end
 end

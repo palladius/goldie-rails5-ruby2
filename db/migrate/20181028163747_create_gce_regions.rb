@@ -4,7 +4,8 @@ class CreateGceRegions < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :address
       t.text :description
-      t.bool :is_active
+      t.string :default_zones
+      t.boolean :is_active, :default => true
 
       t.timestamps
     end
