@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_163747) do
+ActiveRecord::Schema.define(version: 2018_10_28_175814) do
 
   create_table "gce_regions", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2018_10_28_163747) do
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "gce_zones", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_active", default: true
+    t.integer "gce_region_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gce_region_id"], name: "index_gce_zones_on_gce_region_id"
   end
 
 end

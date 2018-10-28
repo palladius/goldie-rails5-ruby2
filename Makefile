@@ -19,6 +19,8 @@ run-docker:
 install-from-scratch:
 	rails new goldie-rails5-ruby2
 	rails generate controller Welcome index about license
-	rails generate scaffold GceRegion name:string address:string description:text is_active:bool
+	rails generate scaffold GceRegion name:string address:string description:text is_active:boolean
+	rails generate scaffold GceZone   name:string is_active:boolean GceRegion:references
+
 
 

@@ -1,5 +1,7 @@
 class GceRegion < ApplicationRecord
   # attr_accessible :address, :name, :description
+  has_many :zones
+
 
   validates :name,  :presence => true, format: { with: /\A[a-z]+-[a-z]+\d+\z/, 
     	message: "Use following format: $CONTINENT-$POSITION$DIGITS (all lowercase), e.g. 'antarctica-west42'"}

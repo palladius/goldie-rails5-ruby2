@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :gce_zones
   resources :gce_regions
   get 'welcome/about'
   get 'welcome/index'

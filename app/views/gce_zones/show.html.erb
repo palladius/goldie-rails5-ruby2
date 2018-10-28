@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gce_zone.name %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @gce_zone.is_active %>
+</p>
+
+<p>
+  <strong>Gceregion:</strong>
+  <%= @gce_zone.gce_region %>
+</p>
+
+<%= link_to 'Edit', edit_gce_zone_path(@gce_zone) %> |
+<%= link_to 'Back', gce_zones_path %>
