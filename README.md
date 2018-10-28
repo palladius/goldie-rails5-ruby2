@@ -25,4 +25,3 @@ On Rails 3 (new one! 2018):
 
 * DHH
 * Matz
-* Ryan Bates for NIfty generators and amazing railscasts.
