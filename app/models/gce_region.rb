@@ -1,6 +1,6 @@
 class GceRegion < ApplicationRecord
   # attr_accessible :address, :name, :description
-  has_many :zones
+  has_many :gce_zones
 
 
   validates :name,  :presence => true, format: { with: /\A[a-z]+-[a-z]+\d+\z/, 
@@ -27,6 +27,18 @@ class GceRegion < ApplicationRecord
   	return_value = name
   	return_value += " (INACTIVE)" unless is_active?
   	return_value
+  end
+
+  def zones
+  	gce_zones
+  end
+
+  def autocreate_child_zones
+  	zones = self.default_zones.split(",") # ['a','b','c']
+  	zones.each do |z| 
+  	  return_value = GceZone.create_by_region_and_suffix(self, z).save
+  	  print "Creating zone #{z} for Region #{self}: #{return_value}"
+	end
   end
 
 #    $ rails generate model Comment commenter:string body:text post:references

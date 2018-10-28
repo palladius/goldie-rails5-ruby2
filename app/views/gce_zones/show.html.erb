@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Gceregion:</strong>
-  <%= @gce_zone.gce_region %>
+  <strong>GCE Region:</strong>
+  <%= link_to @gce_zone.gce_region, @gce_zone.gce_region %> 
 </p>
 
 <%= link_to 'Edit', edit_gce_zone_path(@gce_zone) %> |

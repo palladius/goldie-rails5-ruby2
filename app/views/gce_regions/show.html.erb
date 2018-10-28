@@ -25,5 +25,25 @@
   <%= @gce_region.is_active %>
 </p>
 
+<h2>Zones under this region</h2>
+  <% @gce_region.zones.each do |zone| %>
+    <p>
+      <%= link_to zone, zone %>      
+    </p>
+  <% end %>
+
+<h2>Add a Zone under this region</h2>
+
+  <%= form_for([@gce_region, @gce_region.gce_zones.build]) do |f| %>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+
 <%= link_to 'Edit', edit_gce_region_path(@gce_region) %> |
 <%= link_to 'Back', gce_regions_path %>

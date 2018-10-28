@@ -24,11 +24,15 @@ class GceZonesController < ApplicationController
   # POST /gce_zones
   # POST /gce_zones.json
   def create
+    #@gce_region = GceRegion.find(params[:gce_region_id])
+    #@gce_zone = @gce_region.gce_zones.create(params[:gce_zone])
+    #redirect_to region_path(@region)
+
     @gce_zone = GceZone.new(gce_zone_params)
 
     respond_to do |format|
       if @gce_zone.save
-        format.html { redirect_to @gce_zone, notice: 'Gce zone was successfully created.' }
+        format.html { redirect_to @gce_zone, notice: 'Gce Zone was successfully created.' }
         format.json { render :show, status: :created, location: @gce_zone }
       else
         format.html { render :new }

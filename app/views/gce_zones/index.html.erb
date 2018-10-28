@@ -17,7 +17,7 @@
       <tr>
         <td><%= gce_zone.name %></td>
         <td><%= gce_zone.is_active %></td>
-        <td><%= gce_zone.gce_region %></td>
+        <td><%= link_to gce_zone.gce_region, gce_zone.gce_region %></td>
         <td><%= link_to 'Show', gce_zone %></td>
         <td><%= link_to 'Edit', edit_gce_zone_path(gce_zone) %></td>
         <td><%= link_to 'Destroy', gce_zone, method: :delete, data: { confirm: 'Are you sure?' } %></td>

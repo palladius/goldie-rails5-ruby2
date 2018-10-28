@@ -9,4 +9,15 @@ class GceZone < ApplicationRecord
   def to_s
   	name
   end
+
+  def self.create_by_region_and_suffix(region, suffix)
+    # Example: Region("antarctica-west42"), 'a' => "antarctica-west42-a" zne
+    # TODO(ricc): validate region is a GceRegion
+    # TODO(ricc): validate suffix is a /[a-z]/
+    #assert_match(/[a-z]/, suffix)
+    #assert_instance_of GceRegion, region
+    
+    GceZone.create(name: region.name + "-" + suffix, gce_region_id: region.id, is_active: region.is_active)
+  end
+
 end

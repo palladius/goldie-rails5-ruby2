@@ -47,4 +47,9 @@ f.each do |line|
   r.save
 end
 
+# Sample zones
+
+sample_region = GceRegion.first
+
+
 print "rake db:seed completed!\n"

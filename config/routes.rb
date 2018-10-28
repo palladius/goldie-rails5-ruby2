@@ -9,4 +9,8 @@ Rails.application.routes.draw do
 
   resources :just_routes
 
+  resources :gce_regions do
+    resources :gce_zones
+  end
+
 end
