@@ -1,2 +1,14 @@
 <h1>Welcome#about</h1>
 <p>Find me in app/views/welcome/about.html.erb</p>
+
+note this doesnt 
+
+<h2>App Info</h2>
+
+Change this data in `config/initializers/riccardo_constants.rb`:
+
+<pre>
+<%$APP.each  do |k,v| %>
+  <b><%= k %></b>: <%= v %> 
+<% end %>	
+</pre>
