@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_10_28_175814) do
     t.string "address"
     t.text "description"
     t.string "default_zones"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
