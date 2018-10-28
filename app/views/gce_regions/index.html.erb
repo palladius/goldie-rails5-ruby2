@@ -7,8 +7,8 @@
     <tr>
       <th>Name</th>
       <th>Address</th>
-      <th>Description</th>
-      <th>Is active</th>
+      <th>Zones</th>
+      <th>Dflt Zones</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,12 +16,14 @@
   <tbody>
     <% @gce_regions.each do |gce_region| %>
       <tr>
-        <td><%= gce_region.name %></td>
+        <td><%= link_to gce_region.name,gce_region %></td>
         <td><%= gce_region.address %></td>
-        <td><%= gce_region.description %></td>
+        <td><% gce_region.gce_zones.each do |z| %>
+            <%= link_to z,z %>
+        <% end %>
+        </td>
         <td><%= gce_region.default_zones %></td>
         <td><%= gce_region.is_active %></td>
-        <td><%= link_to 'Show', gce_region %></td>
         <td><%= link_to 'Edit', edit_gce_region_path(gce_region) %></td>
         <td><%= link_to 'Destroy', gce_region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

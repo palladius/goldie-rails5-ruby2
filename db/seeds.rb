@@ -30,8 +30,7 @@ us-west2	a, b, c	Los Angeles, California, USA
 GceRegion.create(name: 'southamerica-east1', address: 'São Paulo, Brazil', default_zones: 'a,b,c')
 GceRegion.create(name: 'southamerica-east1', address: 'São Paulo, Brazil', default_zones: 'a,b,c') # should fail as name is taken
 #GceZone.create(name: 'southamerica-east1-a')
-#GceZone.create(name: 'southamerica-east1-b')
-#GceZone.create(name: 'southamerica-east1-c')
+
 
 # Autogenerate from Regions.txt FILE.
 f = File.open("#{Rails.root}/db/regions.txt" ).readlines()
@@ -48,8 +47,13 @@ f.each do |line|
 end
 
 # Sample zones
+sample_region = GceRegion.second
+sample_region.autocreate_child_zones
 
-sample_region = GceRegion.first
+# Create zones for ALL regions
+GceRegion.all.each do |r|
+  r.autocreate_child_zones
+end
 
 
 print "rake db:seed completed!\n"

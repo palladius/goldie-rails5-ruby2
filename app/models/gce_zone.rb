@@ -10,6 +10,13 @@ class GceZone < ApplicationRecord
   	name
   end
 
+  def validate
+    z = self.name
+    r = self.gce_region.name
+    # ASSERT z starts with r
+    raise "Wrong name! R(#{r}) <=> Z(#{z})" unless z.start_with?(r)
+  end
+
   def self.create_by_region_and_suffix(region, suffix)
     # Example: Region("antarctica-west42"), 'a' => "antarctica-west42-a" zne
     # TODO(ricc): validate region is a GceRegion

@@ -33,11 +33,16 @@ class GceRegion < ApplicationRecord
   	gce_zones
   end
 
+  def validate
+    gce.zones.each {|z| z.validate }
+
+  end
+
   def autocreate_child_zones
-  	zones = self.default_zones.split(",") # ['a','b','c']
+  	zones = self.default_zones.split(",").map{|x| x.strip } # ['a','b','c']
   	zones.each do |z| 
-  	  return_value = GceZone.create_by_region_and_suffix(self, z).save
-  	  print "Creating zone #{z} for Region #{self}: #{return_value}"
+  	  return_value = GceZone.create_by_region_and_suffix(self, z) # .save
+  	  print "Creating zone #{z} for Region #{self}... #{return_value}\n"
 	end
   end
 

@@ -4,7 +4,6 @@ class CreateGceZones < ActiveRecord::Migration[5.2]
       t.string :name
       t.boolean :is_active, :default => true
       t.references :gce_region, foreign_key: true
-
       t.timestamps
     end
 
