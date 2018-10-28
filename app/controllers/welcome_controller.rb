@@ -6,4 +6,6 @@ class WelcomeController < ApplicationController
 
   def about
   end
+  def license
+  end
 end
