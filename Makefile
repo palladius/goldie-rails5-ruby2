@@ -22,5 +22,3 @@ install-from-scratch:
 	rails generate scaffold GceRegion name:string address:string description:text is_active:boolean
 	rails generate scaffold GceZone   name:string is_active:boolean GceRegion:references
 
-
-
