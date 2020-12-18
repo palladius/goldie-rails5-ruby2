@@ -1,0 +1,32 @@
+######################################################
+#
+# CURRENT_VERSION: vedi sotto (DRY)
+#
+# = HISTORY =
+#
+# v1.7 2020-12-01 Copied from sinatroccolo
+---
+options:
+    machineType: 'N1_HIGHCPU_8'
+timeout: 600s
+tags: ['cb-trigger', 'from-sinatroccolo', 'ror5', 'tag-$TAG_NAME']
+images:
+    - 'gcr.io/$PROJECT_ID/ror5-gceregions-cloudbuild'
+steps:
+    # 1. Build Dockerfile
+    - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+        - '-eEuo'
+        - 'pipefail'
+        - '-c'
+        - 'make docker-build'
+
+    # 2. Create tags and pushes them
+    - name: 'gcr.io/cloud-builders/gcloud'
+      entrypoint: 'bash'
+      args:
+          - '-eEuo'
+          - 'pipefail'
+          - '-c'
+          - 'make docker-push-to-gcp'

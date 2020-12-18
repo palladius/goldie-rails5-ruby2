@@ -12,7 +12,7 @@ Currently working on dockerization.
 # Run
 
     make run        # run normally
-    make docker-run # run dockerized version, and builds if necessary.
+    make docker-run # run dockerized version, and builds if necessary
 
 ## DB History
 
