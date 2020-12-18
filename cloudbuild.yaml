@@ -18,7 +18,7 @@ steps:
     - name: 'gcr.io/cloud-builders/docker'
       id: '01 docker build manually' # Lets make sure MAKE exists 
       #entrypoint: 'bash'
-      args: ['build', '-it', 'ror5-gceregions:cloudbuild', '.', '-f', 'Dockerfile.rails' ]
+      args: ['build', '-t', 'ror5-gceregions:cloudbuild', '.', '-f', 'Dockerfile.rails' ]
 
     - name: 'gcr.io/cloud-builders/gcloud'
       id: '01 gcloud - bash - make' # Lets make sure MAKE exists 
