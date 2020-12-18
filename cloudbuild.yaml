@@ -13,15 +13,15 @@ options:
     machineType: 'N1_HIGHCPU_8'
 timeout: 600s
 tags: ['cb-trigger', 'from-sinatroccolo', 'ror5', 'tag-$TAG_NAME']
-images:
-    - 'gcr.io/$PROJECT_ID/ror5-gceregions:cloudbuild'
+#images:
+#    - 'gcr.io/$PROJECT_ID/ror5-gceregions:cloudbuild'
 steps:
     - name: 'gcr.io/cloud-builders/docker'
       id: '[WORKS] docker build manually' # Lets make sure MAKE exists 
       args: ['build', '-t', 'ror5-gceregions:cloudbuild', '.', '-f', 'Dockerfile.rails' ]
 
     - name: 'gcr.io/cloud-builders/docker'
-      id: '[_DUNNO_] docker build manually' # Lets make sure MAKE exists 
+      id: '[_DUNNO_] docker push (depends on docker build)' # Lets make sure MAKE exists 
       args: ['push', 'ror5-gceregions:cloudbuild' ]
 
     # # to troubleshoot locally: docker run -it --entrypoint bash gcr.io/cloud-builders/gcloud make
@@ -53,8 +53,8 @@ steps:
         - 'pipefail'
         - '-c'
         - |-
+          set -x
           echo ciao Im in multiline
-          echo $PATH 
           env
           which make
           cat Makefile
@@ -68,5 +68,4 @@ steps:
           - '-eEuo'
           - 'pipefail'
           - '-c'
-          - 'make'
-          - 'docker-push-to-gcp'
+          - 'make docker-push-to-gcp'

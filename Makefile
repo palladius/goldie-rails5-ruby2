@@ -17,6 +17,7 @@ routes:
 	rails routes
 
 docker-build:
+	echo Entering Docker Build DEBUG for cloud build...
 	docker build -t $(APPNAME):v$(VERSION) . -f Dockerfile.rails 
 
 docker-run: docker-build
