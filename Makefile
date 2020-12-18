@@ -25,7 +25,7 @@ docker-run-bash: docker-build
 	docker run -p 8080:8080 -it $(APPNAME):v$(VERSION) bash
 
 docker-push-to-gcp: docker-build
-	./tag-and-push.sh $(APPNAME):v$(VERSION)
+	./tag-and-push.sh $(APPNAME) $(VERSION)
 
 run-docker:
 	@echo TODO with pure docker, lets use docker composer now.

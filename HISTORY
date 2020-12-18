@@ -1,3 +1,6 @@
+2020-12-18 v1.0.0 Added some new interesting stuff to schema. Moved from 0.9 to 1.0 for semantic verisoning.
+2020-12-18 v1.0.1 Fixed Dockerfile. Now it works beautifully and also uploades to GCP :)
+2020-12-18 v1.0.0 Added some new interesting stuff to schema. Moved from 0.9 to 1.0 for semantic verisoning.
 2018-10-28 v0.9.4 fixed a bug, now all zones are beautifully there!
 2018-10-28 v0.9.3 Now GceZones and GCeRegions work nearly perfectly.
 2018-10-28 v0.9.1 Added docker containers (Actually two recipes from two sites, since my localhost doesnt have docker - so i wait to try another one :)

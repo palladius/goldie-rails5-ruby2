@@ -1,3 +1,4 @@
 Makefile
 README.md
 Dockerfile.rails
+tag-and-push.sh
