@@ -3,7 +3,7 @@
 
 run:
 	bundle install
-	rails server
+	rails server -b 0.0.0.0 -p 8080
 
 routes:
 	rails routes

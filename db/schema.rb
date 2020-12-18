@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_175814) do
+ActiveRecord::Schema.define(version: 2020_12_18_061052) do
 
   create_table "gce_regions", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2018_10_28_175814) do
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "machine_types"
+    t.string "cpus"
+    t.string "resources"
   end
 
   create_table "gce_zones", force: :cascade do |t|

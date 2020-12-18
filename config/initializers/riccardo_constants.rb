@@ -6,10 +6,10 @@
 
 $APP = {
   :name        => '[TEMPLATE] Goldie_Rails (you probably want to change me in config/initializers/riccardo_constants.rb)',
-  :headline    => '[TEMPLATE] This is my Headline for  app. (config/initializers/riccardo_constants.rb)',
+  :headline    => '[TEMPLATE] This is my Headline for app. (config/initializers/riccardo_constants.rb)',
   :history     => File.open("#{Rails.root}/HISTORY" ).read ,  # RAILS_ROOT
   :version     => File.open("#{Rails.root}/VERSION" ).read ,  # RAILS_ROOT
-  :copyright   => 'Copyright 2018-18 A few rights reserved (see LICENSE)',
+  :copyright   => 'Copyright 2018-20 A few rights reserved (see LICENSE)',
   :email       => 'riccardo.carle' + 'sso+goldie521@gmail.com',
   :author_name => 'Riccardo Carlesso',
   :is_template => true, # change to false

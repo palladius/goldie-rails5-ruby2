@@ -1,6 +1,9 @@
-asia-east1	a, b, c	Changhua County, Taiwan
-asia-east2	a, b, c	Hong Kong
+#Schema1: Region, zones, Location
+#Schema2: Region, zones, Location, MachineTypes
+asia-east1	a, b, c	Changhua County, Taiwan	E2, N2, N2D, N1, M1, C2	
+asia-east2	a, b, c	Hong Kong	E2, N2, N1, C2	
 asia-northeast1	a, b, c	Tokyo, Japan
+asia-northeast2	a, b, c	Osaka, Japan, APAC	E2, N1
 asia-south1	a, b, c	Mumbai, India
 asia-southeast1	a, b, c	Jurong West, Singapore
 australia-southeast1	a, b, c	Sydney, Australia
@@ -16,3 +19,5 @@ us-east1	b, c, d	Moncks Corner, South Carolina, USA
 us-east4	a, b, c	Ashburn, Northern Virginia, USA
 us-west1	a, b, c	The Dalles, Oregon, USA
 us-west2	a, b, c	Los Angeles, California, USA
+
+
