@@ -15,18 +15,22 @@ images:
 steps:
     # 1. Build Dockerfile
     - name: 'gcr.io/cloud-builders/gcloud'
+      id: 01 Build Docker File
       entrypoint: 'bash'
       args:
         - '-eEuo'
         - 'pipefail'
         - '-c'
-        - 'make docker-build'
+        - 'make'
+        - 'docker-build'
 
     # 2. Create tags and pushes them
     - name: 'gcr.io/cloud-builders/gcloud'
+      id: 02 Tag locally to both vVER and LATEST and push both
       entrypoint: 'bash'
       args:
           - '-eEuo'
           - 'pipefail'
           - '-c'
-          - 'make docker-push-to-gcp'
+          - 'make'
+          - 'docker-push-to-gcp'
