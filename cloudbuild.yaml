@@ -4,34 +4,36 @@
 #
 # = HISTORY =
 #
-# v1.7 2020-12-01 Copied from sinatroccolo
+# gcloud PATH
+#root@53c32dc5748a:/# echo $PATH
+#/builder/google-cloud-sdk/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
 ---
 options:
     machineType: 'N1_HIGHCPU_8'
 timeout: 600s
 tags: ['cb-trigger', 'from-sinatroccolo', 'ror5', 'tag-$TAG_NAME']
-#images:
-#    - 'gcr.io/$PROJECT_ID/ror5-gceregions'
+images:
+    - 'gcr.io/$PROJECT_ID/ror5-gceregions:cloudbuild'
 steps:
-    # to troubleshoot locally: docker run -it --entrypoint bash gcr.io/cloud-builders/gcloud make
-    # docker build -t $(APPNAME):v$(VERSION) . -f Dockerfile.rails 
     - name: 'gcr.io/cloud-builders/docker'
-      id: '01 docker build manually' # Lets make sure MAKE exists 
-      #entrypoint: 'bash'
+      id: '[WORKS] docker build manually' # Lets make sure MAKE exists 
       args: ['build', '-t', 'ror5-gceregions:cloudbuild', '.', '-f', 'Dockerfile.rails' ]
 
-    - name: 'gcr.io/cloud-builders/gcloud'
-      id: '01 gcloud - bash - make' # Lets make sure MAKE exists 
-      entrypoint: 'bash'
-      args: ['/usr/bin/make', 'docker-build']
+    # # to troubleshoot locally: docker run -it --entrypoint bash gcr.io/cloud-builders/gcloud make
+    # - name: 'gcr.io/cloud-builders/gcloud'
+    #   id: '[FAILS] gcloud img -> bash app -> make' # Lets make sure MAKE exists
+    #   # Error:/usr/bin/make: /usr/bin/make: cannot execute binary file 
+    #   entrypoint: 'bash'
+    #   args: ['/usr/bin/make', 'docker-build']
       
 
-        # 1. Build Dockerfile
-    - name: bash # 'gcr.io/cloud-builders/docker'
-      id: 00 Lets try make build from another execution strategy without bash
-      entrypoint: '/usr/bin/make'
-      args:
-        - 'docker-build'
+    #     # 1. Build Dockerfile
+    # - name: bash # 'gcr.io/cloud-builders/docker'
+    #   id: 00 Lets try make build from another execution strategy without bash
+    #   entrypoint: '/usr/bin/make'
+    #   args:
+    #     - 'docker-build'
 
 
     # 1. Build Dockerfile
