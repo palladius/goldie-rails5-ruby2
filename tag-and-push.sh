@@ -17,5 +17,7 @@ echo "1. Taking for granted local tag exists: $APPVER"
 _docker tag "${APPVER}" "gcr.io/$PROJECT_ID/${APPVER}" &&
            _docker push "gcr.io/$PROJECT_ID/${APPVER}"
 echo "2. Building also LATEST version"
+
+_docker tag "${APPVER}" "${APP}" &&
 _docker tag "${APP}" "gcr.io/$PROJECT_ID/${APP}" &&
            _docker push "gcr.io/$PROJECT_ID/${APP}"

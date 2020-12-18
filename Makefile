@@ -1,5 +1,5 @@
 
-APPNAME = ror-gceregions
+APPNAME = ror5-gceregions
 VERSION = $(shell cat VERSION)
 #SHELL := /bin/bash
 
