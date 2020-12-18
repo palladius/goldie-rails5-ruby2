@@ -21,7 +21,7 @@ steps:
       args: ['build', '-t', 'ror5-gceregions:cloudbuild', '.', '-f', 'Dockerfile.rails' ]
 
     - name: 'gcr.io/cloud-builders/docker'
-      id: '[??] docker build manually' # Lets make sure MAKE exists 
+      id: '[_DUNNO_] docker build manually' # Lets make sure MAKE exists 
       args: ['push', 'ror5-gceregions:cloudbuild' ]
 
     # # to troubleshoot locally: docker run -it --entrypoint bash gcr.io/cloud-builders/gcloud make
@@ -42,7 +42,8 @@ steps:
 
     # 1. Build Dockerfile
     # Should waitFor noone, since it can start in parallel
-    - name: 'gcr.io/cloud-builders/docker'
+#    - name: 'gcr.io/cloud-builders/docker' # non va WEIRD ERROR
+    - name:  bash # 'gcr.io/cloud-builders/docker'
       id: 01 Build Docker File with bash and make
       entrypoint: 'bash'
       waitFor: ['-']
@@ -50,7 +51,7 @@ steps:
         - '-eEuo'
         - 'pipefail'
         - '-c'
-        - '/usr/bin/make'
+        - 'make'
         - 'docker-build'
 
     # 2. Create tags and pushes them
