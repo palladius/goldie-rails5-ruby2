@@ -20,6 +20,10 @@ steps:
       id: '[WORKS] docker build manually' # Lets make sure MAKE exists 
       args: ['build', '-t', 'ror5-gceregions:cloudbuild', '.', '-f', 'Dockerfile.rails' ]
 
+    - name: 'gcr.io/cloud-builders/docker'
+      id: '[??] docker build manually' # Lets make sure MAKE exists 
+      args: ['push', 'ror5-gceregions:cloudbuild' ]
+
     # # to troubleshoot locally: docker run -it --entrypoint bash gcr.io/cloud-builders/gcloud make
     # - name: 'gcr.io/cloud-builders/gcloud'
     #   id: '[FAILS] gcloud img -> bash app -> make' # Lets make sure MAKE exists
