@@ -13,16 +13,17 @@ tags: ['cb-trigger', 'from-sinatroccolo', 'ror5', 'tag-$TAG_NAME']
 #images:
 #    - 'gcr.io/$PROJECT_ID/ror5-gceregions'
 steps:
+    # to troubleshoot locally: docker run -it --entrypoint bash gcr.io/cloud-builders/gcloud make
     - name: 'gcr.io/cloud-builders/gcloud'
       id: 00 Lets make sure MAKE exists 
       entrypoint: 'bash'
-      args: ['make', 'docker-build']
+      args: ['/usr/bin/make', 'docker-build']
       
 
         # 1. Build Dockerfile
     - name: bash # 'gcr.io/cloud-builders/docker'
       id: 00 Lets try make build from another execution strategy without bash
-      entrypoint: 'make'
+      entrypoint: '/usr/bin/make'
       args:
         - 'docker-build'
 
@@ -35,7 +36,7 @@ steps:
         - '-eEuo'
         - 'pipefail'
         - '-c'
-        - 'make'
+        - '/usr/bin/make'
         - 'docker-build'
 
     # 2. Create tags and pushes them
