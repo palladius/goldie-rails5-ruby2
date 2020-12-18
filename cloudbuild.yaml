@@ -41,9 +41,11 @@ steps:
 
 
     # 1. Build Dockerfile
+    # Should waitFor noone, since it can start in parallel
     - name: 'gcr.io/cloud-builders/docker'
       id: 01 Build Docker File with bash and make
       entrypoint: 'bash'
+      waitFor: -
       args:
         - '-eEuo'
         - 'pipefail'
