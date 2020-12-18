@@ -13,18 +13,23 @@ tags: ['cb-trigger', 'from-sinatroccolo', 'ror5', 'tag-$TAG_NAME']
 #images:
 #    - 'gcr.io/$PROJECT_ID/ror5-gceregions'
 steps:
+    - name: bash # 'gcr.io/cloud-builders/docker'
+      id: 00 Lets make sure MAKE exists 
+      entrypoint: 'which'
+      args:
+        - 'make'
 
         # 1. Build Dockerfile
-    - name: 'gcr.io/cloud-builders/gcloud'
-      id: 00 boh 
+    - name: bash # 'gcr.io/cloud-builders/docker'
+      id: 00 Lets try make build from another execution strategy without bash
       entrypoint: 'make'
       args:
         - 'docker-build'
 
 
     # 1. Build Dockerfile
-    - name: 'gcr.io/cloud-builders/gcloud'
-      id: 01 Build Docker File
+    - name: 'gcr.io/cloud-builders/docker'
+      id: 01 Build Docker File with bash and make
       entrypoint: 'bash'
       args:
         - '-eEuo'
