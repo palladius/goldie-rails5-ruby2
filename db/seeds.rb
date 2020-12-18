@@ -21,23 +21,25 @@
 =end
 
 seed_version = '1.1'
-file_timestamp =  File.mtime("#{Rails.root}/db/regions.txt")
+file_timestamp =  File.mtime("#{Rails.root}/db/regions.tsv")
 
 GceRegion.create(name: 'southamerica-east1', address: 'São Paulo, Brazil', default_zones: 'a,b,c')
 GceRegion.create(name: 'southamerica-east1', address: 'São Paulo, Brazil', default_zones: 'a,b,c') # should fail as name is taken
 #GceZone.create(name: 'southamerica-east1-a')
 
 
-# Autogenerate from Regions.txt FILE.
-f = File.open("#{Rails.root}/db/regions.txt").readlines()
+# Autogenerate from Regions.tsv FILE.
+f = File.open("#{Rails.root}/db/regions.tsv").readlines()
 f.each do |line|
-  region_name, commasep_zones, address, machine_types = line.split("\t")
+  region_name, commasep_zones, address, machine_types,cpus,resources = line.split("\t")
   r = GceRegion.create(
     name: region_name, 
     address: address,
-    description: "[db/seed.rb] taken from `regions.txt` (cut and pasted from: https://cloud.google.com/compute/docs/regions-zones/ ) and updated to #{file_timestamp} (seed_version: #{seed_version})",
+    description: "[db/seed.rb] taken from `regions.tsv` (cut and pasted from: https://cloud.google.com/compute/docs/regions-zones/ ) and updated to #{file_timestamp} (seed_version: #{seed_version})",
     default_zones: commasep_zones,
     machine_types: machine_types,
+    cpus: cpus,
+    resources: resources,
   )
   print "New region: #{r}\n"
   r.save

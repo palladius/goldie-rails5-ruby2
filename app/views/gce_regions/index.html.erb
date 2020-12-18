@@ -2,6 +2,9 @@
 
 <h1>Gce Regions</h1>
 
+Note CPOUs and Resoureces better pertain to ZONES, not regions. They should be refactored there when you have some time.
+Maybe move from TSV to a gcloud zones list and populate from API :)
+
 <table>
   <thead>
     <tr>
@@ -9,6 +12,9 @@
       <th>Address</th>
       <th>Zones</th>
       <th>Dflt Zones</th>
+      <th>MachineTypes</th>
+      <th>CPUs</th>
+      <th>Resources</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,7 +29,9 @@
         <% end %>
         </td>
         <td><%= gce_region.default_zones %></td>
-        <td><%= gce_region.is_active %></td>
+        <td><%= gce_region.machine_types %></td>
+        <td><%= gce_region.cpus %></td>
+        <td><%= gce_region.resources %></td>
         <td><%= link_to 'Edit', edit_gce_region_path(gce_region) %></td>
         <td><%= link_to 'Destroy', gce_region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

@@ -8,6 +8,11 @@ run:
 routes:
 	rails routes
 
+docker-build:
+	docker build -t gceregions
+
+docker-run: docker-build
+
 run-docker:
 	@echo TODO with pure docker, lets use docker composer now.
 	# See https://github.com/pacuna/rails5-docker-alpine
