@@ -27,6 +27,9 @@ docker-run-bash: docker-build
 docker-push-to-gcp: docker-build
 	./tag-and-push.sh $(APPNAME) $(VERSION)
 
+cloud-build-locally:
+	cloud-build-local .
+
 run-docker:
 	@echo TODO with pure docker, lets use docker composer now.
 	# See https://github.com/pacuna/rails5-docker-alpine

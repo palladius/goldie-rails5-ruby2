@@ -10,9 +10,18 @@ options:
     machineType: 'N1_HIGHCPU_8'
 timeout: 600s
 tags: ['cb-trigger', 'from-sinatroccolo', 'ror5', 'tag-$TAG_NAME']
-images:
-    - 'gcr.io/$PROJECT_ID/ror5-gceregions-cloudbuild'
+#images:
+#    - 'gcr.io/$PROJECT_ID/ror5-gceregions'
 steps:
+
+        # 1. Build Dockerfile
+    - name: 'gcr.io/cloud-builders/gcloud'
+      id: 00 boh 
+      entrypoint: 'make'
+      args:
+        - 'docker-build'
+
+
     # 1. Build Dockerfile
     - name: 'gcr.io/cloud-builders/gcloud'
       id: 01 Build Docker File
