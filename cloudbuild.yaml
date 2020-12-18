@@ -42,8 +42,9 @@ steps:
 
     # 1. Build Dockerfile
     # Should waitFor noone, since it can start in parallel
-#    - name: 'gcr.io/cloud-builders/docker' # non va WEIRD ERROR
-    - name:  bash # 'gcr.io/cloud-builders/docker'
+#    - name: 'gcr.io/cloud-builders/docker' # 1. non va WEIRD ERROR
+#    - name:  bash # 'gcr.io/cloud-builders/docker'  # non trova Makefile
+    - name: 'gcr.io/cloud-builders/gcloud'
       id: 01 Build Docker File with bash and make
       entrypoint: 'bash'
       waitFor: ['-']
@@ -51,8 +52,13 @@ steps:
         - '-eEuo'
         - 'pipefail'
         - '-c'
-        - 'make'
-        - 'docker-build'
+        - |-
+          echo ciao Im in multiline
+          echo $PATH 
+          env
+          which make
+          cat Makefile
+          /usr/bin/make docker-build
 
     # 2. Create tags and pushes them
     - name: 'gcr.io/cloud-builders/gcloud'
