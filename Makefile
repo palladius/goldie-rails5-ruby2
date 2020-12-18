@@ -29,9 +29,9 @@ docker-push-to-gcp: docker-build
 	./tag-and-push.sh $(APPNAME) $(VERSION)
 
 cloud-build-locally:
-	echo 1. Lets first try with dryrun to check syntatic errors
+	echo 1. Lets first try with dryrun to check syntatic errors| lolcat
 	cloud-build-local .
-	echo 2. Lets now rock it!
+	echo 2. Lets now do it without dryrun | lolcat
 	cloud-build-local --dryrun=false .
 
 run-docker:

@@ -47,7 +47,7 @@ steps:
     - name: 'gcr.io/cloud-builders/gcloud'
       id: 01 Build Docker File with bash and make
       entrypoint: 'bash'
-      waitFor: ['-']
+      #waitFor: ['-']
       args:
         - '-eEuo'
         - 'pipefail'
