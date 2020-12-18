@@ -14,8 +14,14 @@ tags: ['cb-trigger', 'from-sinatroccolo', 'ror5', 'tag-$TAG_NAME']
 #    - 'gcr.io/$PROJECT_ID/ror5-gceregions'
 steps:
     # to troubleshoot locally: docker run -it --entrypoint bash gcr.io/cloud-builders/gcloud make
+    # docker build -t $(APPNAME):v$(VERSION) . -f Dockerfile.rails 
+    - name: 'gcr.io/cloud-builders/docker'
+      id: '01 docker build manually' # Lets make sure MAKE exists 
+      #entrypoint: 'bash'
+      args: ['build', '-it', 'ror5-gceregions:cloudbuild', '.', '-f', 'Dockerfile.rails' ]
+
     - name: 'gcr.io/cloud-builders/gcloud'
-      id: 00 Lets make sure MAKE exists 
+      id: '01 gcloud - bash - make' # Lets make sure MAKE exists 
       entrypoint: 'bash'
       args: ['/usr/bin/make', 'docker-build']
       
