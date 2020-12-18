@@ -15,8 +15,8 @@ images:
 steps:
     # 1. Build Dockerfile
     - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
+      entrypoint: 'bash'
+      args:
         - '-eEuo'
         - 'pipefail'
         - '-c'
