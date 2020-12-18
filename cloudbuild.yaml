@@ -13,11 +13,11 @@ tags: ['cb-trigger', 'from-sinatroccolo', 'ror5', 'tag-$TAG_NAME']
 #images:
 #    - 'gcr.io/$PROJECT_ID/ror5-gceregions'
 steps:
-    - name: bash # 'gcr.io/cloud-builders/docker'
+    - name: 'gcr.io/cloud-builders/gcloud'
       id: 00 Lets make sure MAKE exists 
-      entrypoint: 'which'
-      args:
-        - 'make'
+      entrypoint: 'bash'
+      args: ['make', 'docker-build']
+      
 
         # 1. Build Dockerfile
     - name: bash # 'gcr.io/cloud-builders/docker'

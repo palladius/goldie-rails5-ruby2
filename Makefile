@@ -28,7 +28,10 @@ docker-push-to-gcp: docker-build
 	./tag-and-push.sh $(APPNAME) $(VERSION)
 
 cloud-build-locally:
+	echo 1. Lets first try with dryrun to check syntatic errors
 	cloud-build-local .
+	echo 2. Lets now rock it!
+	cloud-build-local --dryrun=false .
 
 run-docker:
 	@echo TODO with pure docker, lets use docker composer now.
