@@ -5,7 +5,7 @@ ruby '~> 2'
 
 # https://github.com/ryanb/nifty-generators
 #gem "nifty-generators", :group => :development
-## FORGET IT, not updated since 2012 :-(
+## FORGET IT, not updated since 2012 :-( It doesnt work - gives error
 
 gem 'google_drive'
 
